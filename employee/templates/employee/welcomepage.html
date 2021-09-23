@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'employee/welcome_style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <ul class="topnav">
+        <li><a href="{% url 'home'%}">Home</a></li>
+        <li><a href="{% url 'employeeList' %}"> Employee List</a></li>
+        <li><a href="{% url 'loanapplication' %}">Create Loan Application</a></li>
+        <li><a href="{% url 'applicationlist' %}">Application List</a></li>
+        <li><a href="{% url 'loanaccount' %}">Create Loan Account</a></li>
+        <li><a href="{% url 'accountlist' %}">Account List</a></li>
+        <li><a href="{%url 'loancollection' %}">Loan Collection</a></li>
+        <li><a href="{%url 'collectionlist' %}">Collection List</a></li>
+        <li><a href="{% url 'performance' %}">Performance</a></li>
+        <li class='right'><form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form></li>
+    </ul>
+    <h1>Welcome {{ name }}</h1>
+    <div class="container">
+    <h3>What is Microfinance?</h3>
+    <p>
+Microfinance is a term for financial services that are offered to individuals of lower socioeconomic 
+backgrounds or those who lack access to traditional financial services. 
+Microfinance includes a number of services, such as savings accounts, checking accounts, 
+fund transfers, microinsurance, and microcredit.
+    </p>
+</div>
+
+    
+</body>
+</html>

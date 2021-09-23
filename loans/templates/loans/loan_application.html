@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'loans/application_form_style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <ul class="topnav">
+        <li><a href="{% url 'home'%}">Home</a></li>
+        <li><a href="{% url 'employeeList' %}"> Employee List</a></li>
+        <li><a href="{% url 'loanapplication' %}">Create Loan Application</a></li>
+        <li><a href="{% url 'applicationlist' %}">Application List</a></li>
+        <li><a href="{% url 'loanaccount' %}">Create Loan Account</a></li>
+        <li><a href="{% url 'accountlist' %}">Account List</a></li>
+        <li><a href="{%url 'loancollection' %}">Loan Collection</a></li>
+        <li><a href="{%url 'collectionlist' %}">Collection List</a></li>
+        <li><a href="{% url 'performance' %}">Performance</a></li>
+        <li class='right'><form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form></li>
+    </ul>
+        <h1>Welcome to micro loan service!</h1>
+        <div class="container1">
+            <h2 id="notification"></h2>
+            <form action="{% url 'loanapplication' %}" method="POST">
+                {% csrf_token %}
+                <label for="client_name">Client Name</label><br>
+                <input type="text" id="client_name" name="client_name" placeholder="Enter client name" required>
+                <br>
+                <br>
+                <label for="income">Monthly Income</label><br>
+                <input type="number" id="income" name="income" placeholder="Enter client's monthly income" required>
+                <br>
+                <br>
+                <label for="expectedloan">Expected Loan</label><br>
+                <input type="number" id="expectedloan" name="expectedloan" placeholder="Enter client's expected loan amount" required>
+                <br>
+                <br>
+                <label for="dob">Date of Birth</label><br>
+                <input type="date" id="dob" name="dob" placeholder="Enter client's DOB" required>
+                <br>
+                <br>
+
+                <button type="submit" onclick="notification()">Create</button>
+            </form>
+        </div>
+        <script>
+            function notification(){
+                document.getElementById('notification').innerHTML = "Application form is created successfully"
+            }
+        </script>
+</body>
+</html>

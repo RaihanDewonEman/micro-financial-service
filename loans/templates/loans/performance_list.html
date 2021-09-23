@@ -1,0 +1,43 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'loans/list_style.css' %}">
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <ul class="topnav">
+            <li><a href="{% url 'home'%}">Home</a></li>
+            <li><a href="{% url 'employeeList' %}"> Employee List</a></li>
+            <li><a href="{% url 'loanapplication' %}">Create Loan Application</a></li>
+            <li><a href="{% url 'applicationlist' %}">Application List</a></li>
+            <li><a href="{% url 'loanaccount' %}">Create Loan Account</a></li>
+            <li><a href="{% url 'accountlist' %}">Account List</a></li>
+            <li><a href="{%url 'loancollection' %}">Loan Collection</a></li>
+            <li><a href="{%url 'collectionlist' %}">Collection List</a></li>
+            <li><a href="{% url 'performance' %}">Performance</a></li>
+            <li class='right'><form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+            </form></li>
+        </ul>
+        <h1>Employee Performance</h1>
+        <table>
+            <tr>
+            <th>User Name</th>
+            <th>Total application creation</th>
+            <th>Total account approved</th>
+            </tr>
+            {% for each in dic %}
+            <tr>
+            {% for key, value in each.items %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+            {% endfor %}
+        </table>
+    </body>
+    </html>

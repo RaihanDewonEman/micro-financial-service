@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'loans/form_list_style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <ul class="topnav">
+        <li><a href="{% url 'home'%}">Home</a></li>
+        <li><a href="{% url 'employeeList' %}"> Employee List</a></li>
+        <li><a href="{% url 'loanapplication' %}">Create Loan Application</a></li>
+        <li><a href="{% url 'applicationlist' %}">Application List</a></li>
+        <li><a href="{% url 'loanaccount' %}">Create Loan Account</a></li>
+        <li><a href="{% url 'accountlist' %}">Account List</a></li>
+        <li><a href="{%url 'loancollection' %}">Loan Collection</a></li>
+        <li><a href="{%url 'collectionlist' %}">Collection List</a></li>
+        <li><a href="{% url 'performance' %}">Performance</a></li>
+        <li class='right'><form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form></li>
+    </ul>
+    <h1>Application List</h1>
+    <div class="conatiner">
+    <table>
+        <tr>
+        <th>Application ID</th>
+        <th>Client Name</th>
+        <th>Monthly Income</th>
+        <th>Expected Loan</th>
+        <th>DOB</th>
+        <th>Created By</th>
+    </tr>
+        {% for one in appList %}
+        <tr>
+            <td>{{ one.id  }}</td>
+            <td>{{ one.client_name }}</td>
+            <td>{{ one.client_monthly_salary }}</td>
+            <td>{{ one.client_loan_amount }}</td>
+            <td>{{ one.client_bod }}</td>
+            <td>{{ one.created_by }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="container1">
+    <form action="{% url 'loanaccount' %}" method="POST">
+        {% csrf_token %}
+        <label for="application_id">Application Id</label>
+        <br>
+        <br>
+        <input type="number" id="application_id" name="application_id" placeholder="Enter Application's id" required>
+        <br>
+        <br>
+        <button name='button_create_account' type="submit">Create Acount</button>
+    </form>
+</div>
+</body>
+</html>

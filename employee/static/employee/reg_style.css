@@ -1,0 +1,35 @@
+
+h1{
+    color: rgb(255, 0, 13);
+    text-align: center;
+}
+
+label{
+    font-size: 20px;
+    font-family:verdana;
+}
+
+.card{
+    margin-top: 100px;
+    margin-left: 400px;
+    padding: 20px;
+    width: 25%;
+    border: 4px cornflowerblue;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: darkgrey;
+    box-shadow: 5px 5px rgb(152, 185, 192);
+}
+form{
+    padding-bottom: 10px;
+}
+button {
+    background-color: #110e9c; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+  }

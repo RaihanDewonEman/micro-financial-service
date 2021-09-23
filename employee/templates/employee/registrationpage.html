@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'employee/reg_style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ error }}</h1>
+    <div class="card">
+        <form action="{% url 'regpage' %}" method="POST">
+            {% csrf_token %}
+            <label for="fname">First Name</label><br>
+            <input type ="text" id="fname" name="fname" placeholder="Federico" required>
+            <br>
+            <br>
+            <label for="lname">Last Name</label><br>
+            <input type ="text" id="lname" name="lname" placeholder="Valverde" required>
+            <br>
+            <br>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+            <br>
+            <br>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <br>
+            <label for="cpassword">Confirm Password</label><br>
+            <input type="password" id="cpassword" name="cpassword" required>
+            <br>
+            <br>
+            <button type="submit">Sign up</button>
+        </form>
+        Already have an account? please <a href="{% url 'login' %}">Log in</a> first!
+    </div>
+</body>
+</html>
